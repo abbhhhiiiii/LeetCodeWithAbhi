@@ -1,12 +1,25 @@
 class Solution(object):
     def sortedSquares(self, nums):
-        
 
-        result =[]
+        left = 0
+        right = len(nums) - 1
+        i = len(nums) - 1
 
-        for num in nums:
-            result.append(num ** 2)
+        result = [0] * len(nums)
 
-            result.sort()
+        while left <= right:
+
+            left_square = nums[left] ** 2
+            right_square = nums[right] ** 2
+
+            if left_square > right_square:
+                result[i] = left_square
+                left += 1
+                i -= 1
+
+            else:
+                result[i] = right_square
+                right -= 1
+                i -= 1
 
         return result
